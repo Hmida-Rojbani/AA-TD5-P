@@ -1,0 +1,14 @@
+FUNCTION localiser(A : AB2_3, x : INTEGER) : AB2_3
+BEGIN
+    IF (A^.fils[1]^.fils[1] = NIL) THEN
+        RETURN A
+    ELSE
+        IF ( x <= A^.L) THEN
+            RETURN localiser(A^.fils[1],x)
+        ELSE_IF (x <= M OR A^.fils[3] = NIL) THEN
+            RETURN localiser(A^.fils[2],x)
+        ELSE
+            RETURN localiser(A^.fils[3],x)
+        END_IF
+    END_IF
+END

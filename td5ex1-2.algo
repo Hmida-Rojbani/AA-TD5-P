@@ -1,0 +1,18 @@
+FUNCTION placer(q: AB2_3, p : AB2_3) : INTEGER
+VAR
+    i : INTEGER := 1
+    j : INTEGER := 4
+BEGIN
+    WHILE (p^.fils[i] <> NIL AND p^.fils[i]^.L < q^.L) DO
+        i := i+1
+    END_WHILE
+
+    WHILE (j > i) DO
+        p^.fils[j] := p^.fils[j-1]
+        j := j -1
+    END_WHILE
+
+    p^.fils[i] := q
+
+    RETURN i
+END

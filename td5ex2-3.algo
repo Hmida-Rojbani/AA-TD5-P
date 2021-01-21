@@ -1,0 +1,11 @@
+FUNCTION NBFeuilles(A : AB2_3) : INTEGER
+BEGIN
+    IF (A = NIL) THEN
+        RETURN 0
+    ELSE_IF(A^.fils[1] = NIL)
+        RETURN 1
+    ELSE 
+        RETURN 1 + NBFeuilles(A^.fils[1]) + NBFeuilles(A^.fils[2])
+            + NBFeuilles(A^.fils[3])
+    END_IF
+END

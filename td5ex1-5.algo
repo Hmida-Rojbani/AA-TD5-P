@@ -1,0 +1,15 @@
+ALGORITHM insertA2_3
+VAR
+    A : AB2_3
+    x : INTEGER
+    p : AB2_3
+    q : AB2_3
+BEGIN
+    lire(x)
+    p := localiser(A, x)
+    q := creer_noeud2_3()
+    q^.L := x
+    placer(q, p)
+    reajuster(p)
+    Rééquilibrer2_3(A , p)
+END

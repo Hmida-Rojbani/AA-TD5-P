@@ -1,0 +1,37 @@
+PROCEDURE Rééquilibrer2_3(VAR A : AB2_3, p : AB2_3) 
+VAR
+    q : AB2_3
+    t : AB2_3
+    pos : INTEGER
+    i : INTEGER
+BEGIN
+    IF (p^.fils[4] <> NIL) THEN
+        q := creer_noeud2_3()
+        q^.fils[1] := p^.fils[3]
+        p^.fils[3] := NIL
+        q^.fils[2] := p^.fils[4]
+        p^.fils[4] := NIL
+        q.L := max(q^.fils[1])
+        q.M := max(q^.fils[2])
+        IF (A = p) THEN
+            A := creer_noeud2_3()
+            A^.fils[1] := p
+            A^.fils[2] := q
+            A^.L := max(p)
+            A^.M := max(q)
+        ELSE
+            t := pere(p)
+            pos := position(p)
+            i := 4
+            WHILE (i > pos + 1) DO
+                t^.fils[i] := t^.fils[i-1]
+                i := i -1
+            END_WHILE
+            t^.fils[pos + 1] := q
+            readjust(t)
+            IF (t^.fils[4] <> NIL) THEN
+                Rééquilibrer2_3(A, t)
+            END_IF
+        END_IF
+    END_IF
+END

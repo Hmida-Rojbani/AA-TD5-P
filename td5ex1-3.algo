@@ -1,0 +1,15 @@
+PROCEDURE reajuster(p : AB2_3)
+VAR
+    ancestre : AB2_3
+BEGIN
+    ancestre := pere(p)
+    IF (ancestre <> NIL) THEN
+        IF (position(p) = 1) THEN
+            ancestre^.L := max(p)
+            ancestre^.M := max(ancestre^.fils[2])
+        ELSE_IF (position(p) = 2) THEN
+            ancestre^.M := max(p)
+        END_IF
+        reajuster(ancestre)
+    END_IF
+END
