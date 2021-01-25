@@ -1,0 +1,12 @@
+FUNCTION ValFeuille(A :AB2_3, S : LS, VAR V : INTEGER) : BOOLEAN
+
+BEGIN
+    IF (S = NIL AND A.fils[1] = NIL) THEN // A.fils[1] = NIL test if A est une feuille
+        V := A^.L
+        RETURN TRUE
+    ELSE_IF(S <> NIL AND A.fils[1] = NIL OR S = NIL AND A.fils[1] <> NIL)
+        RETURN FALSE
+    ELSE
+        RETURN ValFeuille(A.fils[S^.val], S^.next, V)
+    END_IF
+END
