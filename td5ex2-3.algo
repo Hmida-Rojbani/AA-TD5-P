@@ -5,7 +5,7 @@ BEGIN
     ELSE_IF(A^.fils[1] = NIL)
         RETURN 1
     ELSE 
-        RETURN 1 + NBFeuilles(A^.fils[1]) + NBFeuilles(A^.fils[2])
+        RETURN  NBFeuilles(A^.fils[1]) + NBFeuilles(A^.fils[2])
             + NBFeuilles(A^.fils[3])
     END_IF
 END
